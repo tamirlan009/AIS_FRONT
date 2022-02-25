@@ -1,3 +1,4 @@
+
 import 'primevue/resources/primevue.min.css';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
@@ -5,6 +6,7 @@ import 'prismjs/themes/prism-coy.css';
 import './assets/styles/layout.scss';
 import './assets/demo/flags/flags.css';
 import 'leaflet/dist/leaflet.css';
+
 
 import { createApp, reactive } from 'vue';
 import router from "@/router";
@@ -14,7 +16,6 @@ import PrimeVue from 'primevue/config';
 
 import Button from 'primevue/button';
 import ConfirmationService from 'primevue/confirmationservice';
-
 
 
 // PrimeVue
@@ -43,6 +44,11 @@ import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
 import Image from "primevue/image";
 import ConfirmPopup from 'primevue/confirmpopup';
+import Menu from 'primevue/menu';
+import PickList from "primevue/picklist";
+import Card from 'primevue/card';
+import OrderList from 'primevue/orderlist';
+import OverlayPanel from 'primevue/overlaypanel';
 
 
 import Ripple from 'primevue/ripple';
@@ -58,7 +64,6 @@ import {LMap, LTileLayer, LMarker} from "@vue-leaflet/vue-leaflet";
 
 
 const app = createApp(AppWrapper);
-
 app.config.globalProperties.$appState = reactive({ theme: 'lara-light-indigo', darkTheme: false });
 
 app.use(PrimeVue, { ripple: true, inputStyle: 'outlined' });
@@ -102,6 +107,11 @@ app.component('Galleria', Galleria);
 app.component('TabView', TabView);
 app.component('TabPanel', TabPanel);
 app.component('ConfirmPopup', ConfirmPopup);
+app.component('Menu', Menu);
+app.component('PickList', PickList);
+app.component('Card', Card);
+app.component('OrderList', OrderList);
+app.component('OverlayPanel', OverlayPanel);
 
 
 //Lealeft
@@ -112,5 +122,7 @@ app.component('LMarker', LMarker);
 
 
 app.component('BlockViewer', BlockViewer);
+
+
 
 app.mount('#app');

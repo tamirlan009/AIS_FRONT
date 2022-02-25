@@ -17,11 +17,14 @@
 				</button>
 			</li>
 			<li>
-				<button class="p-link layout-topbar-button">
+				<button
+            class="p-link layout-topbar-button"
+            @click="toggle"
+        >
 					<i class="pi pi-user"></i>
 					<span>Profile</span>
 				</button>
-
+        <Menu ref="menu" :model="items" :popup="true" />
 			</li>
 		</ul>
 	</div>
@@ -30,7 +33,21 @@
 <script>
 
 export default {
+  data() {
+    return {
+      items: [
+        {
+          label: 'Выйти',
+          icon: 'pi pi-sign-out',
+          to:{name:'Login'},
+        },
+      ]
+    }
+  },
   methods: {
+    toggle(event) {
+      this.$refs.menu.toggle(event);
+    },
     onMenuToggle(event) {
         this.$emit('menu-toggle', event);
     },

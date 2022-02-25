@@ -24,13 +24,14 @@ export default {
               label: 'Создать', visible: false, icon: 'pi pi-fw pi-pencil',
               items: [
                 {
-                  label: 'Создать задачу', icon: 'pi pi-fw pi-bookmark', to:{name: 'CreateOneTask'}
+                  label: 'Создать поручение', icon: 'pi pi-fw pi-bookmark', to:{name: 'CreateOneTask'}
                 },
                 {
                   label: 'Запустить на детектирование', icon: 'pi pi-fw pi-bookmark', to:{name: 'RunDetection'}
                 }
               ]
             },
+            {label: 'Результат детектирования', icon: 'pi pi-fw pi-check-square', to:{name: 'DetectResult'}},
             {label: 'Выполнение', visible: false, icon: 'pi pi-fw pi-history'},
             {label: 'Поиск', icon: 'pi pi-fw pi-search'},
             {label: 'Отчет', icon: 'pi pi-fw pi-chart-bar'},

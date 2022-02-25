@@ -6,6 +6,9 @@ import RunDetection from "@/views/RunDetection";
 import Login from "@/views/Login";
 import TaskList from "@/components/TaskList/TaskList";
 import OneTaskView from "@/views/OneTaskView";
+import DetectResult from "@/views/DetectResult";
+import DetectResultList from "@/views/DetectResultList";
+
 
 const authGuard = function (to, from, next){
     if(store.state.authenticate.userData===null) next({name:'Login'});
@@ -43,7 +46,18 @@ const routes = [
         component: OneTaskView,
         beforeEnter: authGuard,
     },
-
+    {
+        path: '/DetectResult',
+        name: 'DetectResult',
+        component: DetectResult,
+        beforeEnter: authGuard,
+    },
+    {
+        path: '/DetectResultList/:id',
+        name: 'DetectResultList',
+        component: DetectResultList,
+        beforeEnter: authGuard,
+    },
     {
         path: '/login',
         name: 'Login',

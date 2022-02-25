@@ -12,7 +12,8 @@
               v-model="v$.selectedCategory.$model"
               :class="{'p-invalid':v$.selectedCategory.$invalid && submitted}"
               :options="category"
-              :filter="true" optionLabel="name" placeholder="Выберите категорию*"/>
+              :filter="true" optionLabel="name" placeholder="Выберите категорию*"
+    />
     <div class="mt-5">
          <span class="p-float-label">
           <Textarea class="w-12 h-12rem" id="textarea" v-model="description" rows="3" />

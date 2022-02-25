@@ -19,6 +19,7 @@
     "prismjs": "^1.27.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
+    "vue-zoomer": "^0.4.0-beta.1",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
