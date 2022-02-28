@@ -49,6 +49,7 @@ import PickList from "primevue/picklist";
 import Card from 'primevue/card';
 import OrderList from 'primevue/orderlist';
 import OverlayPanel from 'primevue/overlaypanel';
+import ProgressBar from 'primevue/progressbar';
 
 
 import Ripple from 'primevue/ripple';
@@ -112,6 +113,7 @@ app.component('PickList', PickList);
 app.component('Card', Card);
 app.component('OrderList', OrderList);
 app.component('OverlayPanel', OverlayPanel);
+app.component('ProgressBar', ProgressBar);
 
 
 //Lealeft

@@ -18,7 +18,7 @@
       <VueZoomer
           :zooming-elastic="false"
           class="surface-0"
-          style="width: 100%; height: 600px;">
+          style="width: 100%; height: 60vh;">
         <img  v-if="selection.length>0"
             :src=selection[0].url
             style="object-fit: contain; width: 100%; height: 100%;"
@@ -92,91 +92,6 @@
 
 
   </OverlayPanel>
-
-<!--img-zoom h-30rem surface-0-->
-
-
-
-
-
-
-
-<!--  <v-zoomer-gallery-->
-<!--      ref="gallery"-->
-<!--      :list="urlImageList"-->
-<!--      v-model="selIndex"-->
-<!--  ></v-zoomer-gallery>-->
-
-<!--  <Panel :toggleable="true">-->
-<!--    <div class="grid">-->
-
-<!--      <div class="col-12 sm:col-5">-->
-<!--        <div class="container">-->
-<!--          <Image-->
-<!--              class="full-img"-->
-<!--              v-if="selection[0].length>0"-->
-<!--              imageStyle = "cursor: pointer; width: 100%; height: auto;"-->
-<!--              :src="selection[0][0].url"-->
-<!--              alt="Image Text"-->
-<!--              :preview="true"-->
-<!--          />-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-12 sm:col-7">-->
-
-<!--        <PickList v-model="picklistValue" listStyle="" dataKey="id" v-model:selection="selection">-->
-<!--          <template #item="slotProps">-->
-<!--            <div class="p-caritem">-->
-<!--              <img :src="slotProps.item.url" width="100">-->
-<!--            </div>-->
-<!--          </template>-->
-<!--        </PickList>-->
-<!--      </div>-->
-
-<!--      <div class="col-12 mt-8">-->
-<!--        <div class="col-12">-->
-<!--          <strong class="p-0 m-0 pt-3">-->
-<!--            Категория и описание задачи-->
-<!--          </strong>-->
-<!--          <hr>-->
-<!--        </div>-->
-
-<!--        <Dropdown class="w-12"-->
-<!--                  :filter="true" optionLabel="name" placeholder="Выберите категорию*"-->
-<!--        />-->
-
-<!--        <div class="mt-5">-->
-<!--         <span class="p-float-label">-->
-<!--          <Textarea class="w-12 h-12rem" id="textarea" rows="3" />-->
-<!--          <label for="textarea">Введите описание*</label>-->
-<!--         </span>-->
-<!--        </div>-->
-
-<!--        <div class="col-12 mt-5">-->
-<!--          <strong class="p-0 m-0 pt-3">-->
-<!--            Срок выполнения-->
-<!--          </strong>-->
-<!--          <hr>-->
-<!--          <Calendar dateFormat="dd MM yy" class="w-12"-->
-<!--                    :numberOfMonths="3"/>-->
-<!--        </div>-->
-
-<!--        <div class="col-12 mt-5">-->
-<!--          <strong class="p-0 m-0 pt-3">-->
-<!--            Назначить исполнителя-->
-<!--          </strong>-->
-<!--          <hr>-->
-<!--          <Dropdown class="w-12"-->
-<!--                    :filter="true" optionLabel="username" placeholder="Пусто"/>-->
-<!--        </div>-->
-
-<!--        <div class="col-12 mt-5">-->
-<!--          <Button label="Отправить"/>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--    </div>-->
-<!--  </Panel>-->
 </template>
 
 <script>

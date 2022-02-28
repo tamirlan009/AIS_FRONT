@@ -1,3 +1,4 @@
+import store from "@/store";
 import {openStreetMap} from "@/api";
 import {defaultApiInstance} from "@/api";
 
@@ -29,6 +30,10 @@ export const get = {
     },
     getCurrentTask(id){
         const url = 'get/task/'+id
+        return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
+    },
+    getDetectedList(){
+        const url = 'get/detection/list'
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
     }
 
@@ -70,6 +75,23 @@ export const post = {
 
         return defaultApiInstance.post(url, form, {
             headers:{'Authorization':'Bearer '+JSON.parse(localStorage.getItem('userData')).access, 'Content-Type': 'multipart/form-data'}
+        })
+    },
+
+    runDetection(description, date, video){
+
+        const url = 'post/rundetection'
+        const form = new FormData();
+        form.append('description', description)
+        form.append('date', date)
+        form.append('video', video, video.name)
+        return defaultApiInstance.post(url, form, {
+            headers:{'Authorization':'Bearer '+JSON.parse(localStorage.getItem('userData')).access},
+            onUploadProgress:function (progressEvent){
+                store.state.runDetection.uploadProgress=parseInt(
+                    Math.round( ( progressEvent.loaded / progressEvent.total ) * 100 )
+                )
+            }
         })
     }
 }

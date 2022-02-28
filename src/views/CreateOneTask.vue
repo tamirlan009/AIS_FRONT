@@ -85,7 +85,7 @@
       <Button label="Отправить" @click="send(!v$.$invalid)"/>
     </div>
     <div v-if="validError" class="col-12 mt-5">
-      <small class="text-pink-500">Некоторые обязательные поля не заполнены!</small>
+      <small class="text-pink-500">Обязательные поля не заполнены!</small>
     </div>
 
   </Panel>
