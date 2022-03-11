@@ -22,12 +22,17 @@ export default {
     return{
       selectedItem: null,
       items: [
-        { name: "Все" },
-        { name: "Новые" },
-        { name: "Последний" }
+        { name: 'Все', context: 'all' },
+        { name: 'Выполненные', context: 'is_done' },
+        { name: 'Просрочено', context: 'expired_tasks' },
       ],
     }
-  }
+  },
+  watch:{
+    selectedItem: function (){
+      this.$router.push('/tasks/'+ this.selectedItem.context)
+    },
+  },
 }
 </script>
 

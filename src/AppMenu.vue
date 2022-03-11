@@ -31,10 +31,10 @@ export default {
                 }
               ]
             },
-            {label: 'Результат детектирования', icon: 'pi pi-fw pi-check-square', to:{name: 'DetectResult'}},
-            {label: 'Выполнение', visible: false, icon: 'pi pi-fw pi-history'},
-            {label: 'Поиск', icon: 'pi pi-fw pi-search'},
-            {label: 'Отчет', icon: 'pi pi-fw pi-chart-bar'},
+            {label: 'Результат детектирования', visible: false,  icon: 'pi pi-fw pi-check-square', to:{name: 'DetectResult'}},
+            {label: 'Задания', visible: false, icon: 'pi pi-fw pi-history'},
+            {label: 'Карта', to:{name: 'Map'}, icon: 'pi pi-fw pi-map'},
+            {label: 'Отчет', icon: 'pi pi-fw pi-chart-bar', to:{name: 'Report'}},
           ]
         },
       ]
@@ -43,8 +43,9 @@ export default {
   methods: {
 
     userRouts(){
-      if(this.userCanCreate || this.userIsSuperUser) this.menu[0].items[1].visible=true
-      if(this.userCanAnswer || this.userIsSuperUser) this.menu[0].items[2].visible=true
+      if(this.userCanCreate) this.menu[0].items[1].visible=true
+      if(this.UserCanView) this.menu[0].items[2].visible=true
+      if(this.userCanAnswer) this.menu[0].items[3].visible=true
     },
 
     onMenuItemClick(event) {
@@ -63,7 +64,8 @@ export default {
     ...mapGetters({
       userCanCreate: 'authenticate/userCanCreate',
       userCanAnswer: 'authenticate/userCanAnswer',
-      userIsSuperUser: 'authenticate/userIsSuperUser',
+      UserCanView: 'authenticate/UserCanView',
+
     }),
 
 		darkTheme() {

@@ -37,9 +37,9 @@ export const authenticate = {
             else return false
 
         },
-        userIsSuperUser(state){
+        UserCanView(state){
             if (state.userData){
-                return state.userData.user.is_superuser
+                return state.userData.user.is_superuser || state.userData.user.is_company_employee
             }
             else return false
 

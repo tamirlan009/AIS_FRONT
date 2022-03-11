@@ -5,6 +5,7 @@
       </strong>
     </span>
 
+
     <Tag v-if="data.state === 'на выполнении'" severity="info" :value="data.state"/>
     <Tag v-if="data.state === 'просрочено'" severity="danger" :value="data.state"/>
     <Tag v-if="data.state === 'выполнено'" severity="success" :value="data.state"/>

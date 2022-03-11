@@ -50,7 +50,8 @@ import Card from 'primevue/card';
 import OrderList from 'primevue/orderlist';
 import OverlayPanel from 'primevue/overlaypanel';
 import ProgressBar from 'primevue/progressbar';
-
+import Chart from 'primevue/chart';
+import SplitButton from "primevue/splitbutton";
 
 import Ripple from 'primevue/ripple';
 import StyleClass from 'primevue/styleclass';
@@ -60,7 +61,14 @@ import CodeHighlight from './AppCodeHighlight';
 import BlockViewer from './BlockViewer';
 
 //Lealeft
-import {LMap, LTileLayer, LMarker} from "@vue-leaflet/vue-leaflet";
+import {
+    LMap,
+    LTileLayer,
+    LMarker,
+    LControlLayers,
+    LGeoJson,
+    LPopup,
+} from "@vue-leaflet/vue-leaflet";
 
 
 
@@ -114,14 +122,17 @@ app.component('Card', Card);
 app.component('OrderList', OrderList);
 app.component('OverlayPanel', OverlayPanel);
 app.component('ProgressBar', ProgressBar);
+app.component('Chart', Chart);
+app.component('SplitButton', SplitButton);
 
 
 //Lealeft
 app.component('LMap', LMap);
 app.component('LTileLayer', LTileLayer);
 app.component('LMarker', LMarker);
-
-
+app.component('LControlLayers', LControlLayers);
+app.component('LGeoJson', LGeoJson);
+app.component('LPopup', LPopup);
 
 app.component('BlockViewer', BlockViewer);
 

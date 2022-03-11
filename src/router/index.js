@@ -8,7 +8,8 @@ import TaskList from "@/components/TaskList/TaskList";
 import OneTaskView from "@/views/OneTaskView";
 import DetectResult from "@/views/DetectResult";
 import DetectResultList from "@/views/DetectResultList";
-
+import Map from "@/views/Map";
+import Report from "@/views/Report";
 
 const authGuard = function (to, from, next){
     if(store.state.authenticate.userData===null) next({name:'Login'});
@@ -57,6 +58,18 @@ const routes = [
         name: 'DetectResultList',
         component: DetectResultList,
         beforeEnter: authGuard,
+    },
+    {
+        path: '/map',
+        name: 'Map',
+        component: Map,
+        beforeEnter: authGuard,
+    },
+    {
+      path: '/Report',
+      name: 'Report',
+      component: Report,
+      beforeEnter: authGuard,
     },
     {
         path: '/login',

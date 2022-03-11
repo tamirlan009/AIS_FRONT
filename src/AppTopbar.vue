@@ -5,10 +5,7 @@
 		</button>
 		<ul class="layout-topbar-menu hidden lg:flex origin-top">
 			<li>
-				<button class="p-link layout-topbar-button">
-					<i class="pi pi-calendar"></i>
-					<span>Events</span>
-				</button>
+				<Notification/>
 			</li>
 			<li>
 				<button class="p-link layout-topbar-button">
@@ -17,14 +14,7 @@
 				</button>
 			</li>
 			<li>
-				<button
-            class="p-link layout-topbar-button"
-            @click="toggle"
-        >
-					<i class="pi pi-user"></i>
-					<span>Profile</span>
-				</button>
-        <Menu ref="menu" :model="items" :popup="true" />
+        <User/>
 			</li>
 		</ul>
 	</div>
@@ -32,7 +22,14 @@
 
 <script>
 
+import Notification from "@/components/TopBar/Notification";
+import User from "@/components/TopBar/User";
+
 export default {
+  components:{
+    Notification,
+    User
+  },
   data() {
     return {
       items: [

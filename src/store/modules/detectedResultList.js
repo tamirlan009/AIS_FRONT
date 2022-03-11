@@ -1,6 +1,6 @@
 import {get} from "@/api/apiRoutes";
 
-export const detectedResult = {
+export const detectedResultList = {
     namespaced: true,
     state: ()=>({
         data: null,
@@ -9,13 +9,11 @@ export const detectedResult = {
         setData(state, value){
             state.data = value;
         },
-        deleteData(state, value){
-            state.data = state.data.filter(d => d.id !== value)
-        }
     },
     actions:{
-        async getDetectResult({commit}){
-            return await get.getDetectedList().then((res)=>{
+
+        async getDetailedDetected({commit}, {id}){
+            return await get.getDetailedDetected(id).then((res)=>{
                 commit('setData', res.data)
             })
         }

@@ -18,9 +18,6 @@
           <div v-if="slotProps.option.name==='Срок истекает'" class="col-6 m-0 p-0 flex justify-content-end">
             <span class="bg-yellow-600 border-round text-white pl-1 pr-1">{{this.value.count_expiring_tasks}}</span>
           </div>
-          <div v-if="slotProps.option.name==='Просрочено'" class="col-6 m-0 p-0 flex justify-content-end">
-            <span class="bg-pink-500 border-round text-white pl-1 pr-1">{{this.value.count_expired_tasks}}</span>
-          </div>
         </div>
       </template>
     </Listbox>
@@ -40,7 +37,6 @@ export default {
         { name: "Все", context: 'all_tasks'},
         { name: "Новые", context: 'new_tasks' },
         { name: "Срок истекает", context: 'expiring_tasks' },
-        { name: "Просрочено", context: 'expired_tasks' },
       ],
     }
   },

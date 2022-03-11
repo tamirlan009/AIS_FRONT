@@ -1,3 +1,4 @@
+import moment from "moment";
 import store from "@/store";
 import {openStreetMap} from "@/api";
 import {defaultApiInstance} from "@/api";
@@ -35,6 +36,34 @@ export const get = {
     getDetectedList(){
         const url = 'get/detection/list'
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
+    },
+    getDetailedDetected(id){
+        const url = 'get/detection/'+id
+        return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
+    },
+    getGeoJson(){
+        const url = 'get/geojson'
+        return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
+    },
+    getTaskToMap(lat, lng){
+        const url = 'get/tasktomap'
+
+        return defaultApiInstance.get(url, {
+            headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access},
+            params:{lat: lat, lng: lng}
+        })
+    },
+    getCountTaskReport(startDate, endDate){
+
+        const start = moment(startDate)
+        const end = moment(endDate)
+
+
+
+        const url = 'get/counttaskreport'
+        return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access},
+                params:{start:start.format(), end:end.format()}
+        })
     }
 
 }
@@ -46,6 +75,7 @@ export const post = {
         return defaultApiInstance.post(url, data)
     },
     createOneTask(category, description, latitude, longitude, address, executor, leadTime, images){
+
         const url = 'post/create/task/'
         const form = new FormData();
         form.append('category', category)
@@ -79,7 +109,6 @@ export const post = {
     },
 
     runDetection(description, date, video){
-
         const url = 'post/rundetection'
         const form = new FormData();
         form.append('description', description)
@@ -105,7 +134,20 @@ export const put = {
     }
 }
 
-
+export const del = {
+    deleteDetection(id){
+        const url = 'delete/detection/'+id
+        return defaultApiInstance.delete(url, {
+            headers:{'Authorization':'Bearer '+JSON.parse(localStorage.getItem('userData')).access}
+        })
+    },
+    deletePothole(id){
+        const url = 'delete/pothole/'+id
+        return defaultApiInstance.delete(url, {
+            headers:{'Authorization':'Bearer '+JSON.parse(localStorage.getItem('userData')).access}
+        })
+    }
+}
 
 
 
