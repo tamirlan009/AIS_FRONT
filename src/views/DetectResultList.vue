@@ -1,10 +1,10 @@
 <template>
   <div v-if="data">
-    <div v-if="data.pothols.length>0">
+    <div v-if="data.images.length>0">
       <div class="grid">
         <div class="col-12 md:col-4">
           <OrderList
-              v-model="data.pothols"
+              v-model="data.images"
               listStyle="max-height: 50rem"
               dataKey="id"
               v-model:selection="selection"
@@ -210,7 +210,7 @@ export default {
         this.validError = false
         if(this.selection.length!==0){
           for(const i in this.selection){
-            this.data.pothols= this.data.pothols.filter(p => p.id !== this.selection[i].id)
+            this.data.images= this.data.images.filter(p => p.id !== this.selection[i].id)
           }
           this.sendLatitude = this.selection[0].latitude
           this.sendLongitude = this.selection[0].longitude
@@ -226,7 +226,7 @@ export default {
           ).then(()=>{
             for(const i in this.selection){
               del.deletePothole(this.selection[i].id)
-              this.data.pothols= this.data.pothols.filter(p => p.id !== this.selection[i].id)
+              this.data.images= this.data.images.filter(p => p.id !== this.selection[i].id)
             }
             this.selection = []
             this.$toast.add({severity:'success', summary: 'Поручение успешно создано!', life: 2000});
@@ -240,12 +240,12 @@ export default {
     },
     del(){
       if(this.selection.length!==0){
-        for(const i in this.selection){
 
+        for(const i in this.selection){
           del.deletePothole(this.selection[i].id).then(()=>{
             this.$toast.add({severity:'success', summary: 'Изображение успешно удален!', life: 2000});
           })
-          this.data.pothols= this.data.pothols.filter(p => p.id !== this.selection[i].id)
+          this.data.images=this.data.images.filter(p => p.id !== this.selection[i].id)
         }
         this.selection = []
       }

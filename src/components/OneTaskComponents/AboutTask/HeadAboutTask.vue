@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="block mb-4">Дата создания:
-      <strong class="">{{data.createDate}}
+      <strong class="">{{data.createDateTime}}
       </strong>
     </span>
 

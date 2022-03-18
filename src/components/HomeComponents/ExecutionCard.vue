@@ -34,9 +34,9 @@ export default {
       selectedItem: null,
       value: [],
       items: [
-        { name: "Все", context: 'all_tasks'},
-        { name: "Новые", context: 'new_tasks' },
-        { name: "Срок истекает", context: 'expiring_tasks' },
+        { name: "Все", context: 'all_current_tasks'},
+        { name: "Новые", context: 'new_current_tasks' },
+        { name: "Срок истекает", context: 'expiring_current_tasks' },
       ],
     }
   },

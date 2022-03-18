@@ -13,40 +13,40 @@ export const get = {
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
     },
     getAllTasks(page, value){
-        const url = 'get/task'
+        const url = '/task/get'
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access},
             params:{page: page, value: value}})
     },
     getCountTask(){
-        const url = 'get/counttask/'
+        const url = 'task/get/counttask'
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
     },
     getCategory(){
-        const url = 'get/category/'
+        const url = 'task/get/category'
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
     },
     getRelatedUser(){
-        const url = 'get/related_user'
+        const url = 'token/related_user'
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
     },
     getCurrentTask(id){
-        const url = 'get/task/'+id
+        const url = 'task/get/'+id
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
     },
     getDetectedList(){
-        const url = 'get/detection/list'
+        const url = 'detection/get'
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
     },
     getDetailedDetected(id){
-        const url = 'get/detection/'+id
+        const url = 'detection/get/'+id
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
     },
     getGeoJson(){
-        const url = 'get/geojson'
+        const url = 'map/get/geojson'
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access}})
     },
     getTaskToMap(lat, lng){
-        const url = 'get/tasktomap'
+        const url = 'map/get/tasktomap'
 
         return defaultApiInstance.get(url, {
             headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access},
@@ -60,7 +60,7 @@ export const get = {
 
 
 
-        const url = 'get/counttaskreport'
+        const url = 'report/get/counttask'
         return defaultApiInstance.get(url, {headers:{'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('userData')).access},
                 params:{start:start.format(), end:end.format()}
         })
@@ -76,7 +76,7 @@ export const post = {
     },
     createOneTask(category, description, latitude, longitude, address, executor, leadTime, images){
 
-        const url = 'post/create/task/'
+        const url = 'task/post/create'
         const form = new FormData();
         form.append('category', category)
         form.append('description', description)
@@ -84,7 +84,7 @@ export const post = {
         form.append('longitude', longitude)
         form.append('address', address)
         form.append('executor', executor)
-        form.append('leadTime', leadTime)
+        form.append('leadDateTime', leadTime)
         for(const image in images){
             form.append('images', images[image])
         }
@@ -95,7 +95,7 @@ export const post = {
     },
 
     createAnswer(taskId, description, images){
-        const url = 'post/create/answer/'
+        const url = 'answer/post/create'
         const form = new FormData();
         form.append('task', taskId)
         form.append('description', description)
@@ -109,7 +109,7 @@ export const post = {
     },
 
     runDetection(description, date, video){
-        const url = 'post/rundetection'
+        const url = 'detection/post/run'
         const form = new FormData();
         form.append('description', description)
         form.append('date', date)
@@ -127,7 +127,7 @@ export const post = {
 
 export const put = {
     updateTask(id, data){
-        const url = 'put/update/task/' + id
+        const url = 'task/put/update/' + id
         return defaultApiInstance.put(url, data, {
             headers:{'Authorization':'Bearer '+JSON.parse(localStorage.getItem('userData')).access}
         })
@@ -136,13 +136,13 @@ export const put = {
 
 export const del = {
     deleteDetection(id){
-        const url = 'delete/detection/'+id
+        const url = 'detection/delete/detection/'+id
         return defaultApiInstance.delete(url, {
             headers:{'Authorization':'Bearer '+JSON.parse(localStorage.getItem('userData')).access}
         })
     },
     deletePothole(id){
-        const url = 'delete/pothole/'+id
+        const url = 'detection/delete/image/'+id
         return defaultApiInstance.delete(url, {
             headers:{'Authorization':'Bearer '+JSON.parse(localStorage.getItem('userData')).access}
         })

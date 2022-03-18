@@ -1,6 +1,7 @@
 import axios from "axios";
 import store from "@/store";
 
+
 const defaultHeaders = {
     'Content-Type': 'application/json',
     'Authorization': '',
@@ -17,15 +18,13 @@ export const defaultApiInstance = axios.create({
 defaultApiInstance.interceptors.response.use(function (response) {
     return response;
 }, function (error) {
-    if(error.response.status === 401){
 
-        if(store.state.authenticate.errorAuth){
-            localStorage.removeItem('userData')
-        }
-        else {
-            localStorage.removeItem('userData')
-            location.reload()
-        }
+    if(error.response.status === 401 && !store.getters["authenticate/isAuthenticated"]){
+        localStorage.removeItem('userData')
+    }
+    if (error.response.status === 401 && store.getters["authenticate/isAuthenticated"]){
+        localStorage.removeItem('userData')
+        location.reload()
     }
     return Promise.reject(error);
 });

@@ -7,6 +7,7 @@ export const detectedResult = {
     }),
     mutations:{
         setData(state, value){
+            console.log(value)
             state.data = value;
         },
         deleteData(state, value){

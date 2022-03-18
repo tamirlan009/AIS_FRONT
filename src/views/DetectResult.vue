@@ -11,7 +11,7 @@
            <span>контрольный выезд на {{day.date}}</span>
           </span>
               <div class="col">
-                <small class="mr-3">Количество найденных ям: <strong>{{day.count_pothole || 0}}</strong></small>
+                <small class="mr-3">Количество найденных ям: <strong>{{day.count_objects || 0}}</strong></small>
                 <small>Количество сохраненных изображении: <strong>{{day.count_image || 0}}</strong></small>
               </div>
             </div>
@@ -26,7 +26,7 @@
                   />
                   <Button label="Удалить" @click="del($event, day.id)" class="p-button-danger p-button-outlined" icon="pi pi-times"/>
                 </div>
-                <Button v-else-if="UserCanView"
+                <Button v-else-if="userCanView"
                         label="Смотреть"
                         class="mr-3"
                         icon="pi pi-eye"
@@ -87,7 +87,7 @@ export default {
     }),
     ...mapGetters({
       userCanCreate: 'authenticate/userCanCreate',
-      UserCanView: 'authenticate/UserCanView',
+      userCanView: 'authenticate/userCanView',
 
     }),
   },

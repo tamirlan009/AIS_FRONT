@@ -5,11 +5,8 @@ export const authenticate = {
     namespaced: true,
     state: () => ({
         userData:  JSON.parse(localStorage.getItem('userData')) || null,
-        // token : localStorage.getItem('token') || null,
-        errorAuth: false
     }),
     mutations:{
-
         setUser(state, value){
             state.userData = value;
             localStorage.setItem('userData', JSON.stringify(value))
@@ -17,32 +14,36 @@ export const authenticate = {
         deleteUser(state){
             state.userData = null;
             localStorage.removeItem('userData');
-        },
-        setAuth(state, value){
-            state.errorAuth=value
         }
     },
     getters:{
+        isAuthenticated(state){
+            return !!state.userData
+        },
         userCanCreate(state){
             if (state.userData){
-                return state.userData.user.is_company_employee
+                return state.userData.user.is_creator
             }
             else return false
 
         },
         userCanAnswer(state){
             if (state.userData){
-                return state.userData.user.is_contractor
+                return state.userData.user.is_executor
             }
             else return false
-
         },
-        UserCanView(state){
+        userCanView(state){
             if (state.userData){
-                return state.userData.user.is_superuser || state.userData.user.is_company_employee
+                return state.userData.user.is_superuser || state.userData.user.is_creator
             }
             else return false
-
+        },
+        isSuperUser(state){
+            if (state.userData){
+                return !!state.userData.user.is_superuser;
+            }
+            else return false
         }
     },
     actions:{

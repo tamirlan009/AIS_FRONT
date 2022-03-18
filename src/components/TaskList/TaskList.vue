@@ -1,7 +1,7 @@
 <template>
 
   <DataTable :value="results">
-    <Column :sortable="true" field="createDate"  header="Дата"/>
+    <Column :sortable="true" field="createDateTime"  header="Дата"/>
     <Column header="Категория">-->
       <template #body="slotProps">
         <span>{{slotProps.data.category.name}}</span>

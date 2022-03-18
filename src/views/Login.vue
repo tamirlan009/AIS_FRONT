@@ -9,57 +9,54 @@
                     </div>
                 
                     <div class="w-full md:w-10 mx-auto">
+                      <form @submit.prevent="onSubmit">
                         <label for="login" class="block text-900 text-xl font-medium mb-2">Логин</label>
                         <InputText id="login" v-model="login" type="text" class="w-full mb-3" placeholder="Логин" style="padding:1rem;" />
-                
                         <label for="password1" class="block text-900 font-medium text-xl mb-2">Пароль</label>
                         <Password id="password1" v-model="password" placeholder="Пароль" :feedback="false" :toggleMask="true" class="w-full mb-3" inputClass="w-full" inputStyle="padding:1rem"></Password>
-                        <Button label="Войти" @click="onSubmit" class="w-full p-3 text-xl"></button>
-                      <Message v-if="errorAuth" severity="error">Ошибка авторизации</Message>
+                        <Button label="Войти"  type="submit"  class="w-full p-3 text-xl"></button>
+                        <Message v-if="error" severity="error">Ошибка авторизации</Message>
+                      </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
-import {mapState, mapMutations} from "vuex"
+import {mapGetters} from "vuex"
 
 export default {
   data() {
       return {
           login: '',
           password: '',
+          error: false,
       }
   },
   methods:{
-    ...mapMutations({
-      setAuth: 'authenticate/setAuth'
-    }),
+
 
     onSubmit(){
-      this.setAuth(false)
+      this.error = false
 
       this.$store.dispatch('authenticate/login',{
         username: this.login,
         password: this.password
       }).then(()=>{
-        if(this.userData!==null){
+        if(this.isAuthenticated){
           this.$router.push({ name: 'Home' })
         }
-        else{
-          this.setAuth(true)
-        }
       }).catch(()=>{
-        this.setAuth(true)
+        this.error = true
       })
     }
   },
   computed:{
-    ...mapState({
-      userData: state => state.authenticate.userData,
-      errorAuth: state => state.authenticate.errorAuth
+    ...mapGetters({
+      isAuthenticated: 'authenticate/isAuthenticated'
     })
   },
 }

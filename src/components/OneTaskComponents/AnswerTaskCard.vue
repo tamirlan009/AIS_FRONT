@@ -7,8 +7,8 @@
           <Column field="description"  header="Описание"/>
           <Column header="изображение" headerStyle="width: 20%">
             <template #body="slotProps">
-              <div v-if="slotProps.data.answerimages" class="grid">
-                <div v-for="(image, index) of slotProps.data.answerimages"
+              <div v-if="slotProps.data.answerImages" class="grid">
+                <div v-for="(image, index) of slotProps.data.answerImages"
                      class="col-12 md:col-6 lg:col-4"
                      :key="index">
                   <Image :src="image.url" alt="Image Text" :preview="true" imageStyle="cursor: pointer; width: 100%" />

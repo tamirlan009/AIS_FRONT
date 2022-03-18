@@ -79,6 +79,7 @@ export default {
           this.data.answer.push(res.data);
           this.activeIndexTab = 0;
           this.answerDescription = '';
+          console.log(res.data)
         }).catch(()=>{
           this.$toast.add({severity:'error', summary: 'Ошибка!', detail:'Не удалось отправить запрос на сервер', life: 10000});
         })
