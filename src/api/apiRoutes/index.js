@@ -146,6 +146,19 @@ export const del = {
         return defaultApiInstance.delete(url, {
             headers:{'Authorization':'Bearer '+JSON.parse(localStorage.getItem('userData')).access}
         })
+    },
+    deleteTaskNotification(id, notification_type){
+        const url = 'notification/task/delete/'+id+'/'+notification_type
+        return defaultApiInstance.delete(url, {
+            headers:{'Authorization':'Bearer '+JSON.parse(localStorage.getItem('userData')).access},
+        })
+    },
+
+    deleteDetectionNotification(id){
+        const url = 'notification/detection/delete/'+id
+        return defaultApiInstance.delete(url, {
+            headers:{'Authorization':'Bearer '+JSON.parse(localStorage.getItem('userData')).access},
+        })
     }
 }
 

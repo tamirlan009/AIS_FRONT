@@ -19,6 +19,8 @@ import ConfirmationService from 'primevue/confirmationservice';
 
 
 // PrimeVue
+import BadgeDirective from 'primevue/badgedirective';
+
 import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
 import RadioButton from 'primevue/radiobutton';
@@ -52,6 +54,8 @@ import OverlayPanel from 'primevue/overlaypanel';
 import ProgressBar from 'primevue/progressbar';
 import Chart from 'primevue/chart';
 import SplitButton from "primevue/splitbutton";
+import Sidebar from 'primevue/sidebar';
+
 
 import Ripple from 'primevue/ripple';
 import StyleClass from 'primevue/styleclass';
@@ -85,7 +89,7 @@ app.directive('tooltip', Tooltip);
 app.directive('ripple', Ripple);
 app.directive('code', CodeHighlight);
 app.directive('styleclass', StyleClass);
-
+app.directive('badge', BadgeDirective);
 
 
 //PrimeVue
@@ -124,7 +128,7 @@ app.component('OverlayPanel', OverlayPanel);
 app.component('ProgressBar', ProgressBar);
 app.component('Chart', Chart);
 app.component('SplitButton', SplitButton);
-
+app.component('Sidebar', Sidebar);
 
 //Lealeft
 app.component('LMap', LMap);
